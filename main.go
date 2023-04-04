@@ -29,16 +29,15 @@ func CheckPusReq(patern string, myurl string, path string) bool {
 	return matched
 }
 func Algoritm(url string) {
-	path1 := "${7*7}" //это не патерны - это тестовые пути
-	path2 := "a{*comment*}b"
+	path1 := "${7*7}" //это тестовые пути
+	path2 := "{php}echo `id`;{/php}"
 	path3 := "${\"z\".join(\"ab\")}" //пофиксить строку
 	path4 := "{{7*7}}"
 	path5 := "{{7*'7'}}"
 
-	/// заменить верхнее на патерны
-	patern1 := "${7*7}" //это не патерны - это тестовые пути
-	patern2 := "a{*comment*}b"
-	patern3 := "${\"z\".join(\"ab\")}" //пофиксить строку
+	patern1 := "49" //это патерны ответов
+	patern2 := "/uid=\\d+ gid=\\d+ groups=\\d+"
+	patern3 := "azb" //надо усложнить
 	patern4 := "49"
 	patern5 := "7777777"
 
