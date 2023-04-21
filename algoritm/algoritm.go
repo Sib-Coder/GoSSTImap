@@ -1,8 +1,11 @@
 package algoritm
 
 import (
+	sructurs "awesomeProject1/struct"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"regexp"
 )
@@ -15,27 +18,45 @@ func CheckPusReq(patern string, myurl string, path string) bool {
 	//fmt.Println(patern)//отлаживал алгоритм
 	return matched
 }
+func ParsingJson() sructurs.PathAndPatern {
+	content, err := ioutil.ReadFile("algoritm/file.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	user2 := sructurs.MasPatern{}
+	err = json.Unmarshal(content, &user2)
+	if err != nil {
+		log.Fatal(err)
+	}
+	datapatern := sructurs.PathAndPatern{}
+	datapatern.Path1 = user2.MasPatternPath[0].PathInEX //это тестовые пути
+	datapatern.Path2 = user2.MasPatternPath[1].PathInEX
+	datapatern.Path3 = user2.MasPatternPath[2].PathInEX
+	datapatern.Path4 = user2.MasPatternPath[3].PathInEX
+	datapatern.Path5 = user2.MasPatternPath[4].PathInEX
+
+	datapatern.Patern1 = user2.MasPatternPath[0].PaternInEX
+	datapatern.Patern2 = user2.MasPatternPath[1].PaternInEX
+	datapatern.Patern3 = user2.MasPatternPath[2].PaternInEX
+	datapatern.Patern4 = user2.MasPatternPath[3].PaternInEX
+	datapatern.Patern5 = user2.MasPatternPath[4].PaternInEX
+
+	return datapatern
+
+}
+
 func Algoritm(url string) {
-	path1 := "${7*7}" //это тестовые пути
-	path2 := "{php}echo `id`;{/php}"
-	path3 := "${\"z\".join(\"ab\")}" //пофиксить строку
-	path4 := "{{7*7}}"
-	path5 := "{{7*'7'}}"
 
-	patern1 := "49" //это патерны ответов
-	patern2 := "/uid=\\d+ gid=\\d+ groups=\\d+"
-	patern3 := "azb" //надо усложнить
-	patern4 := "49"
-	patern5 := "7777777"
+	datapath := ParsingJson()
 
-	if CheckPusReq(patern1, url, path1) == true {
-		if CheckPusReq(patern2, url, path2) == true {
+	if CheckPusReq(datapath.Patern1, url, datapath.Path1) == true {
+		if CheckPusReq(datapath.Patern2, url, datapath.Path2) == true {
 			fmt.Println("Smarty")
-		} else if CheckPusReq(patern3, url, path3) == true {
+		} else if CheckPusReq(datapath.Patern3, url, datapath.Path3) == true {
 			fmt.Println("Mako")
 		}
-	} else if CheckPusReq(patern4, url, path4) == true {
-		if CheckPusReq(patern5, url, path5) == true {
+	} else if CheckPusReq(datapath.Patern4, url, datapath.Path4) == true {
+		if CheckPusReq(datapath.Patern5, url, datapath.Path5) == true {
 			fmt.Println("Jinja2 and Twig")
 		} else {
 			fmt.Println("Unknown")
