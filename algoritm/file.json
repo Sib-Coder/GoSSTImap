@@ -1,0 +1,18 @@
+{"MasPatternPath":[
+  {"NumberInAggoritm": "first",
+  "PathInEX": "${7*7}",
+  "PaternInEX": "49"},
+  {"NumberInAggoritm": "second",
+  "PathInEX": "{php}echo `id`;{/php}",
+  "PaternInEX":  "/uid=\\d+ gid=\\d+ groups=\\d+"},
+  {"NumberInAggoritm": "third",
+    "PathInEX": "${\"z\".join(\"ab\")}",
+    "PaternInEX": "azb"},
+  {"NumberInAggoritm": "fourth",
+    "PathInEX": "{{7*7}}",
+    "PaternInEX": "49"},
+  {"NumberInAggoritm": "fifth",
+    "PathInEX": "{{7*'7'}}",
+    "PaternInEX": "7777777"}
+]
+}

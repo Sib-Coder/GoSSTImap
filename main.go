@@ -2,6 +2,7 @@ package main
 
 import (
 	"awesomeProject1/algoritm"
+	"awesomeProject1/attack"
 	"flag"
 	"fmt"
 )
@@ -13,7 +14,12 @@ func main() {
 	flag.Parse()
 	url := *myurl
 	if url != "0" {
-		algoritm.Algoritm(url)
+		name := algoritm.Algoritm(url)
+		if name == "  " {
+			fmt.Println("Неизвестный шаблонизатор")
+		} else {
+			attack.AttakForWeb(url, name)
+		}
 	} else {
 		fmt.Println("\nEror\nПерезапустите программу с флагом --url  ")
 	}
