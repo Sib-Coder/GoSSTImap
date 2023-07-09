@@ -45,23 +45,32 @@ func ParsingJson() sructurs.PathAndPatern {
 
 }
 
-func Algoritm(url string) {
+func Algoritm(url string) string {
 
 	datapath := ParsingJson()
-
+	nametemplate := "  "
 	if CheckPusReq(datapath.Patern1, url, datapath.Path1) == true {
 		if CheckPusReq(datapath.Patern2, url, datapath.Path2) == true {
+			nametemplate = "Smarty"
+			fmt.Println("Тип шаблонизатора: ")
 			fmt.Println("Smarty")
 		} else if CheckPusReq(datapath.Patern3, url, datapath.Path3) == true {
+			nametemplate = "Mako"
+			fmt.Println("Тип шаблонизатора: ")
 			fmt.Println("Mako")
 		}
 	} else if CheckPusReq(datapath.Patern4, url, datapath.Path4) == true {
 		if CheckPusReq(datapath.Patern5, url, datapath.Path5) == true {
+			nametemplate = "Jinja2"
+			fmt.Println("Тип шаблонизатора: ")
 			fmt.Println("Jinja2 and Twig")
 		} else {
+			fmt.Println("Тип шаблонизатора: ")
 			fmt.Println("Unknown")
 		}
 	} else {
-		fmt.Println("Не знаю")
+		fmt.Println("Тип шаблонизатора: ")
+		fmt.Println("Unknown")
 	}
+	return nametemplate
 }
