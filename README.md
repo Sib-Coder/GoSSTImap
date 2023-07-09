@@ -1,7 +1,7 @@
 # GoSSTImap
 ## Утилита для сканирования веб сайта на наличие SSTI. 
 Данная утилита была написана в рамках курсовой работы за 3 курс и представляет из себя реализацию обхода алгоритма представленного ниже.
-![Аглоритм]()
+![Аглоритм](https://github.com/Sib-Coder/GoSSTImap/blob/main/doc/algorimt.png)
 
 ## Начало работы 
 1) Если у вас нет в наличии тестового сервиса можно взять разработанный мою [тестовый сервис](https://github.com/Sib-Coder/TestSSTIWebServer).
@@ -25,6 +25,7 @@ go run main.go --url <Url>
 ```
 
 ## Пример работы
-![пример работы]()
+![пример работы](https://github.com/Sib-Coder/GoSSTImap/blob/main/doc/teststart.png)
  
+## Текст курсовой доступен [тут](https://github.com/Sib-Coder/GoSSTImap/blob/main/doc/CourseWork.pdf)
 
